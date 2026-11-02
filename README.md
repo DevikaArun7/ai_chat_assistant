@@ -1,17 +1,58 @@
-# ai_chat_assistant
+# AI Chat Assistant 
 
-A new Flutter project.
+A Flutter-based AI Chat Assistant powered by the Gemini API. Users can send messages and receive AI-generated responses through a simple chat interface.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Real-time AI responses using Gemini API
+- User and assistant chat bubbles
+- Loading indicator while waiting for responses
+- Automatic retry for temporary API errors
+- Local chat history using SharedPreferences
+- Clear chat functionality
+- Error handling
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Flutter
+- Dart
+- Gemini API
+- REST API
+- HTTP
+- SharedPreferences
+- Flutter Dotenv
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Project Structure
+
+
+lib/
+├── models/
+│   └── chat_message.dart
+├── services/
+│   ├── ai_chat_service.dart
+│   └── chat_storage_service.dart
+├── screens/
+│   └── chat_page.dart
+├── widgets/
+│   └── chat_bubble.dart
+└── main.dart
+
+
+## Setup Instructions
+
+1. Download the project files from GitHub.
+2. Open the project in VS Code or Android Studio.
+3. Run `flutter pub get`.
+4. Create a `.env` file in the project root.
+5. Add your Gemini API key:
+
+   GEMINI_API_KEY=_api_key
+
+6. Run the app using `flutter run`.
+
+
+## Author
+
+Devika Arun
+
+Flutter Developer
