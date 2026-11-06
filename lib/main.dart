@@ -1,14 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'Screens/welcome_screen.dart';
 
-import 'screens/chat_page.dart';
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await dotenv.load(fileName: '.env');
-
+void main() {
   runApp(const MyApp());
 }
 
@@ -20,10 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'AI Chat Assistant',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const ChatPage(),
+      theme: ThemeData.dark(),
+      home: const WelcomeScreen(),
     );
   }
 }

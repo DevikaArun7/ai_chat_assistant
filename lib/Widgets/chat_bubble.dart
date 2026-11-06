@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../models/chat_message.dart';
 
@@ -14,76 +13,49 @@ class ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isUser = message.isUser;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        mainAxisAlignment:
-            isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (!isUser) ...[
-            const CircleAvatar(
-              radius: 17,
-              backgroundColor: Color(0xFFE9DDFB),
-              child: Icon(
-                Icons.auto_awesome,
-                color: Color(0xFF6750A4),
-                size: 19,
-              ),
-            ),
-            const SizedBox(width: 9),
-          ],
-
-          Flexible(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
-              decoration: BoxDecoration(
-                color: isUser
-                    ? const Color(0xFF6750A4)
-                    : Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(18),
-                  topRight: const Radius.circular(18),
-                  bottomLeft: Radius.circular(isUser ? 18 : 5),
-                  bottomRight: Radius.circular(isUser ? 5 : 18),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                   color: Colors.black.withValues(alpha: 0.04),
-                    blurRadius: 8,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Text(
-                message.text,
-                style: TextStyle(
-                  fontSize: 15,
-                  height: 1.5,
-                  color: isUser
-                      ? Colors.white
-                      : const Color(0xFF292333),
-                ),
-              ),
-            ),
+    return Align(
+      alignment:
+          isUser ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 300),
+        margin: const EdgeInsets.symmetric(
+          vertical: 7,
+          horizontal: 12,
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 17,
+          vertical: 13,
+        ),
+        decoration: BoxDecoration(
+          gradient: isUser
+              ? const LinearGradient(
+                  colors: [
+                    Color(0xFF9B5CFF),
+                    Color(0xFF6735C9),
+                  ],
+                )
+              : null,
+          color: isUser ? null : const Color(0xFF25213A),
+          borderRadius: BorderRadius.only(
+            topLeft: const Radius.circular(20),
+            topRight: const Radius.circular(20),
+            bottomLeft: Radius.circular(isUser ? 20 : 5),
+            bottomRight: Radius.circular(isUser ? 5 : 20),
           ),
-
-          if (isUser) ...[
-            const SizedBox(width: 9),
-            const CircleAvatar(
-              radius: 17,
-              backgroundColor: Color(0xFFE9DDFB),
-              child: Icon(
-                Icons.person,
-                color: Color(0xFF6750A4),
-                size: 19,
-              ),
-            ),
-          ],
-        ],
+          border: isUser
+              ? null
+              : Border.all(
+                  color: Colors.white.withValues(alpha: 0.07),
+                ),
+        ),
+        child: Text(
+          message.text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            height: 1.5,
+          ),
+        ),
       ),
     );
   }
